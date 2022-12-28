@@ -14,9 +14,9 @@ export default function Home() {
        <nav className=" bg-blue-800 p-5 border-b-2 flex flex-row ">
             <h1 className="py-4 px-4 font-bold text-3xl text-white">Voting App</h1>
            <div className="flex mt-2 ml-auto  text-xl">
-           <p href="/">
+           
               <p className="py-4 px-4 font-bold text-white border-solid hover:border-2">Home</p>
-            </p>
+            
       
            </div>
             <div className="ml-auto mt-2 py-2 px-4">

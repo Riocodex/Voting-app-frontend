@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useEffect , useState } from 'react'
+
+import { ethers } from "ethers";
+
+
 
 const StartElection = () => {
+    const [title , setTitle] = React.useState("")
+    const [period , setPeriodChange] = React.useState()
+    // updating the title Change
+    function updateTitle(event){
+        setTitle(event.target.value)
+        console.log(title)
+        
+      }
+  
+      //updating the period
+      function updatePeriod(event){
+        setPeriodChange(event.target.value)
+        console.log(period)
+      }
+
   return (
     <div>
             <div className='h-screen flex justify-center items-center py-20 px-20 '>
@@ -14,7 +33,7 @@ const StartElection = () => {
         <input 
         class="ml-6 m-2 px-20 py-5 rounded-lg border-gray-200 border-2 text-gray-500 text-xl font-semibold justify-center items-center placeholder-indigo-300" 
         type="text" 
-        
+        onChange={updateTitle}
         placeholder="Enter election title"
         />
       </div>
@@ -24,6 +43,7 @@ const StartElection = () => {
         class="ml-6 m-2 px-20 py-5 rounded-lg border-gray-200 border-2 text-gray-500 text-xl font-semibold justify-center items-center placeholder-indigo-300" 
         type="text" 
         placeholder="Enter period of election"
+        onChange={updatePeriod}
         />
       </div>
         
