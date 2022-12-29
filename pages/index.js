@@ -21,7 +21,11 @@ export default function Home() {
 
   //web3 states
   const [currentAccount, setCurrentAccount] = useState("");
+  
+  //smartContract states
+  const [electionDetails, setElectionDetails] = useState([])
  
+  const [candidateDetails, setCandidateDetails] = useState([])
 
       // Wallet connection logic
   const isWalletConnected = async () => {
@@ -108,7 +112,10 @@ export default function Home() {
       </div>
       </div>
       <StartElection contractAddress={contractAddress} contractABI={contractABI}/>
-      <Register contractAddress={contractAddress} contractABI={contractABI}/>
+      <Register 
+      contractAddress={contractAddress} 
+      contractABI={contractABI} 
+      setCandidateDetails={setCandidateDetails}/>
       
     </div>
   </>

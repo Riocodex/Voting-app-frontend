@@ -11,7 +11,7 @@ const Register = ({contractAddress, contractABI}) => {
     
   }
 
-  const registerTx = async ({contractAddress, contractABI}) => {
+  const registerTx = async () => {
     try {
       const {ethereum} = window;
 
@@ -25,7 +25,7 @@ const Register = ({contractAddress, contractABI}) => {
         );
 
         console.log("registering.......")
-        const registerTxn = await votingContract.startElection(nameChange,{value: ethers.utils.parseEther("1")});
+        const registerTxn = await votingContract.register(nameChange,{value: ethers.utils.parseEther("1")});
 
         await registerTxn.wait();
 
@@ -43,32 +43,31 @@ const Register = ({contractAddress, contractABI}) => {
 
  
 
-   // Function to fetch all result
-const getCandidateDetails = async () => {
-try {
-  const { ethereum } = window;
-  if (ethereum) {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const votingContract = new ethers.Contract(
-      contractAddress,
-      contractABI,
-      signer
-    );
-    
+  //Function to fetch all result
+  const getCandidateDetails = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const votingContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        
 
-    console.log("fetching details of candidates");
-    const candidateDetails = await votingContract.getCandidates();
-    console.log("fetched!");
-    console.log("the candidate details are",candidateDetails.toString())
-  } else {
-    console.log("Metamask is not connected");
-  }
-  
-} catch (error) {
-  console.log(error);
-}
-};
+        console.log("fetching candidates");
+        let candidates = await votingContract.getCandidates();
+        console.log("candidates for the election are: ", candidates);
+      } else {
+        console.log("Metamask is not connected");
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
