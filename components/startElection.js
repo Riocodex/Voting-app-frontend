@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 
 
 
-const StartElection = ({contractAddress, contractABI}) => {
+const StartElection = ({contractAddress, contractABI, setElectionDetails}) => {
     const [title , setTitle] = React.useState("")
     const [period , setPeriodChange] = React.useState()
     // updating the title Change
@@ -70,9 +70,11 @@ const StartElection = ({contractAddress, contractABI}) => {
         const electionDetails = await votingContract.getElectionDetails();
         console.log("fetched!");
         console.log("the election details are",electionDetails.toString())
+        setElectionDetails(electionDetails)
       } else {
         console.log("Metamask is not connected");
       }
+     
       
     } catch (error) {
       console.log(error);

@@ -27,6 +27,11 @@ export default function Home() {
  
   const [candidateDetails, setCandidateDetails] = useState([])
 
+  const viewDetails = () => {
+    console.log('this is electiondetails',electionDetails)
+    console.log('this is candidate details',candidateDetails)
+  }
+
       // Wallet connection logic
   const isWalletConnected = async () => {
     try {
@@ -111,12 +116,21 @@ export default function Home() {
       
       </div>
       </div>
-      <StartElection contractAddress={contractAddress} contractABI={contractABI}/>
+      <StartElection 
+      contractAddress={contractAddress} 
+      contractABI={contractABI}
+      setElectionDetails={setElectionDetails}
+      />
       <Register 
       contractAddress={contractAddress} 
       contractABI={contractABI} 
       setCandidateDetails={setCandidateDetails}/>
       
+      <button
+      onClick={viewDetails}
+      >
+        Click to view details
+      </button>
     </div>
   </>
   )
