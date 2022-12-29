@@ -16,7 +16,7 @@ import abi from '../constants/abi.json'
 
 export default function Home() {
 
-  let contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+  let contractAddress = "0x0165878A594ca255338adfa4d48449f69242Eb8F"
   const contractABI = abi.abi
 
   //web3 states
@@ -106,7 +106,7 @@ export default function Home() {
       <div className='h-800 bg-blue-500 rounded-t-xl'>
           <div className=' border-t rounded-t-xl flex flex-col justify-center items-center py-20 big-one'>
             <p className='text-8xl'>🏆</p>
-            <p className='text-4xl text-white font-bold mt-4'>Artist of the Year</p>
+            <p className='text-4xl text-white font-bold mt-4'>{electionDetails[0] }</p>
           </div>
           <div className='bg-blue-800 py-10 px-10 flex justify-around'>
         
