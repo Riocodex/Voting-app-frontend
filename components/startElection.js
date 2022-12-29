@@ -50,9 +50,7 @@ const StartElection = ({contractAddress, contractABI}) => {
         getElectionDetails()
       };
 
-      const sayHello = async() =>{
-        console.log('hello')
-      }
+     
 
        // Function to fetch all result
   const getElectionDetails = async () => {
