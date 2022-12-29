@@ -25,7 +25,7 @@ export default function Home() {
   //smartContract states
   const [electionDetails, setElectionDetails] = useState([])
  
-  const [candidateDetails, setCandidateDetails] = useState([])
+  const [candidateDetails, setCandidateDetails] = useState()
 
   const viewDetails = () => {
     console.log('this is electiondetails',electionDetails)
@@ -106,13 +106,12 @@ export default function Home() {
       <div className='h-800 bg-blue-500 rounded-t-xl'>
           <div className=' border-t rounded-t-xl flex flex-col justify-center items-center py-20 big-one'>
             <p className='text-8xl'>🏆</p>
-            <p className='text-4xl text-white font-bold mt-4'>{electionDetails[0] }</p>
+            <p className='text-4xl text-white font-bold mt-4'>{electionDetails[0]}</p>
           </div>
           <div className='bg-blue-800 py-10 px-10 flex justify-around'>
         
-        <VoterCard/>
-        <VoterCard/>
-        <VoterCard/>
+        <VoterCard candidateDetails={candidateDetails}/>
+       
       
       </div>
       </div>
