@@ -107,7 +107,7 @@ export default function Home() {
       
       </div>
       </div>
-      <StartElection/>
+      <StartElection contractAddress={contractAddress} contractABI={contractABI}/>
       <Register/>
       
     </div>

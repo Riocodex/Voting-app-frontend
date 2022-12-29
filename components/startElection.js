@@ -4,21 +4,83 @@ import { ethers } from "ethers";
 
 
 
-const StartElection = () => {
+const StartElection = ({contractAddress, contractABI}) => {
     const [title , setTitle] = React.useState("")
     const [period , setPeriodChange] = React.useState()
     // updating the title Change
     function updateTitle(event){
         setTitle(event.target.value)
-        console.log(title)
+        
         
       }
   
       //updating the period
       function updatePeriod(event){
         setPeriodChange(event.target.value)
-        console.log(period)
+        
       }
+
+      const startElectionTx = async () => {
+        try {
+          const {ethereum} = window;
+    
+          if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum, "any");
+            const signer = provider.getSigner();
+            const votingContract = new ethers.Contract(
+              contractAddress,
+              contractABI,
+              signer
+            );
+    
+            console.log("starting election.......")
+            const electionTxn = await votingContract.startElection(title,period,{value: ethers.utils.parseEther("1")});
+    
+            await electionTxn.wait();
+    
+            
+    
+            console.log("Election has been created");
+    
+           
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        getElectionDetails()
+      };
+
+      const sayHello = async() =>{
+        console.log('hello')
+      }
+
+       // Function to fetch all result
+  const getElectionDetails = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const votingContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        
+
+        console.log("fetching details of election");
+        const electionDetails = await votingContract.getElectionDetails();
+        console.log("fetched!");
+        console.log("the election details are",electionDetails.toString())
+      } else {
+        console.log("Metamask is not connected");
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+    
 
   return (
     <div>
@@ -49,7 +111,7 @@ const StartElection = () => {
         
         
   <button 
-  
+  onClick={startElectionTx}
   class="mt-8 bg-blue-800 rounded-lg text-white py-5 px-6 font-bold text-xl mt-2 hover:py-6 hover:px-10 hover:text-2xl"
   >
     Start Election
