@@ -144,13 +144,8 @@ export default function Home() {
       contractABI={contractABI} 
       setCandidateDetails={setCandidateDetails}
       />
-      <Voting/>
+      <Voting isElection={isElection}/>
       
-      <button
-      onClick={viewDetails}
-      >
-        Click to view details
-      </button>
     </div>
   </>
   )
