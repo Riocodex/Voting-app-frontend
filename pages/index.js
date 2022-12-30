@@ -114,10 +114,14 @@ export default function Home() {
         {candidateDetails ? (
           
           candidateDetails.map(item => 
+            console.log(item),
             <VoterCard
               key={item.id}
               {...item}
-            />)
+              
+            />
+            
+            )
         ):(<p>No candidates</p>)}
         
        
