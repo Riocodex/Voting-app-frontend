@@ -16,7 +16,7 @@ import abi from '../constants/abi.json'
 
 export default function Home() {
 
-  let contractAddress = "0x0165878A594ca255338adfa4d48449f69242Eb8F"
+  let contractAddress = "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0"
   const contractABI = abi.abi
 
   //web3 states
@@ -67,7 +67,18 @@ export default function Home() {
       console.log(error);
     }
   }
-  
+
+  //updating the votercards
+  function voterCards(){
+    candidateDetails.map(item=>{
+      return(
+        <VoterCard
+        key={item.id}
+        {...item}
+        />
+      )
+    })
+  }
 
  
 
@@ -111,7 +122,8 @@ export default function Home() {
           </div>
           <div className='bg-blue-800 py-10 px-10 flex justify-around'>
         
-        <VoterCard candidateDetails={candidateDetails}/>
+        {}
+        
        
       
       </div>
