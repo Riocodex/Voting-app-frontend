@@ -24,7 +24,7 @@ const Voting = ({isElection, contractAddress, contractABI}) => {
             );
     
             console.log("voting.......")
-            const votingTxn = await votingContract.startElection(voterName,{value: ethers.utils.parseEther("1")});
+            const votingTxn = await votingContract.vote(voterName,{value: ethers.utils.parseEther("1")});
     
             await votingTxn.wait();
     
