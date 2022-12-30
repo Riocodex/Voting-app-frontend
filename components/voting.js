@@ -31,16 +31,15 @@ const Voting = ({isElection, contractAddress, contractABI}) => {
             
     
             console.log("voted!");    
-            getElectionDetails()   
+            getCandidateDetails()   
           }
         } catch (error) {
           console.log(error);
         }
         
       };
-      
-       // Function to fetch all result
-  const getElectionDetails = async () => {
+  //Function to fetch all result
+  const getCandidateDetails = async () => {
     try {
       const { ethereum } = window;
       if (ethereum) {
@@ -53,21 +52,18 @@ const Voting = ({isElection, contractAddress, contractABI}) => {
         );
         
 
-        console.log("fetching details of election");
-        const electionDetails = await votingContract.getElectionDetails();
-        console.log("fetched!");
-        console.log("the election details after voting are",electionDetails.toString())
-        
+        console.log("fetching candidates");
+        let candidates = await votingContract.getCandidates();
+        console.log('candidate details after voting are', candidates)
       } else {
         console.log("Metamask is not connected");
       }
-     
       
     } catch (error) {
       console.log(error);
     }
   };
-    
+
 
      
 
@@ -93,7 +89,7 @@ const Voting = ({isElection, contractAddress, contractABI}) => {
     
     
 <button 
-
+onClick={votingTx}
 class="mt-8 bg-blue-800 rounded-lg text-white py-5 px-6 font-bold text-xl mt-2 hover:py-6 hover:px-10 hover:text-2xl"
 >
 Vote
