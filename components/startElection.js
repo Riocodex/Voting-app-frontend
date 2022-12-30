@@ -4,7 +4,8 @@ import { ethers } from "ethers";
 
 
 
-const StartElection = ({contractAddress, contractABI, setElectionDetails}) => {
+const StartElection = (
+  {contractAddress, contractABI, setElectionDetails, isElection, setIsElection}) => {
     const [title , setTitle] = React.useState("")
     const [period , setPeriodChange] = React.useState()
     // updating the title Change
@@ -41,7 +42,8 @@ const StartElection = ({contractAddress, contractABI, setElectionDetails}) => {
             
     
             console.log("Election has been created");
-    
+            setIsElection(true)
+            console.log(isElection)
            
           }
         } catch (error) {

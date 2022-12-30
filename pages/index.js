@@ -16,7 +16,7 @@ import abi from '../constants/abi.json'
 
 export default function Home() {
 
-  let contractAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+  let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
   const contractABI = abi.abi
 
   //web3 states
@@ -26,6 +26,8 @@ export default function Home() {
   const [electionDetails, setElectionDetails] = useState([])
  
   const [candidateDetails, setCandidateDetails] = useState()
+
+  const [isElection, setIsElection] = useState(false)
 
   const viewDetails = () => {
     console.log('this is electiondetails',electionDetails)
@@ -132,6 +134,9 @@ export default function Home() {
       contractAddress={contractAddress} 
       contractABI={contractABI}
       setElectionDetails={setElectionDetails}
+      electionDetails={electionDetails}
+      isElection={isElection}
+      setIsElection={setIsElection}
       />
       <Register 
       contractAddress={contractAddress} 
