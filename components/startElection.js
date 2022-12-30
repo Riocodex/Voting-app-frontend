@@ -44,12 +44,13 @@ const StartElection = (
             console.log("Election has been created");
             setIsElection(true)
             console.log(isElection)
+            getElectionDetails()
            
           }
         } catch (error) {
           console.log(error);
         }
-        getElectionDetails()
+        
       };
 
      

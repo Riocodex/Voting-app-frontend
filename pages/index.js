@@ -10,6 +10,7 @@ import React, { useEffect , useState } from 'react'
 import VoterCard from '../components/voterCard'
 import StartElection from '../components/StartElection'
 import Register from '../components/register'
+import Voting from '../components/voting';
 
 import abi from '../constants/abi.json'
 
@@ -141,7 +142,9 @@ export default function Home() {
       <Register 
       contractAddress={contractAddress} 
       contractABI={contractABI} 
-      setCandidateDetails={setCandidateDetails}/>
+      setCandidateDetails={setCandidateDetails}
+      />
+      <Voting/>
       
       <button
       onClick={viewDetails}
