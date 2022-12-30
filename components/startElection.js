@@ -105,7 +105,7 @@ const StartElection = (
       <div>
       
         <input 
-        class="ml-6 m-2 px-18 py-5 rounded-lg border-gray-200 border-2 text-gray-500 text-xl font-semibold justify-center items-center placeholder-indigo-300" 
+        class="ml-6 m-2 px-20 py-5 rounded-lg border-gray-200 border-2 text-gray-500 text-xl font-semibold justify-center items-center placeholder-indigo-300" 
         type="text" 
         placeholder="Enter period of election"
         onChange={updatePeriod}

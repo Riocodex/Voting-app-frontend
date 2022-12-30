@@ -3,6 +3,40 @@ import React, { useEffect , useState } from 'react'
 import { ethers } from "ethers";
 
 const Voting = ({isElection}) => {
+    const startElectionTx = async () => {
+        try {
+          const {ethereum} = window;
+    
+          if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum, "any");
+            const signer = provider.getSigner();
+            const votingContract = new ethers.Contract(
+              contractAddress,
+              contractABI,
+              signer
+            );
+    
+            console.log("starting election.......")
+            const electionTxn = await votingContract.startElection(title,period,{value: ethers.utils.parseEther("1")});
+    
+            await electionTxn.wait();
+    
+            
+    
+            console.log("Election has been created");
+            setIsElection(true)
+            console.log(isElection)
+            getElectionDetails()
+           
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        
+      };
+
+     
+
   return (
    <div>
      {isElection ? (
