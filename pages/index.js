@@ -117,7 +117,7 @@ export default function Home() {
       
             <VoterCard
               key={item.id}
-              {...item}
+              item={item}
               
             />
             
