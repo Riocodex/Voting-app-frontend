@@ -122,7 +122,9 @@ export default function Home() {
           </div>
           <div className='bg-blue-800 py-10 px-10 flex justify-around'>
         
-        {}
+        {candidateDetails ? (
+          {voterCards}
+        ):(<p>No candidates</p>)}
         
        
       
