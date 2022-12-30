@@ -143,7 +143,9 @@ export default function Home() {
       <Voting 
       contractAddress={contractAddress} 
       contractABI={contractABI}
-      isElection={isElection}/>
+      isElection={isElection}
+      setCandidateDetails={setCandidateDetails}
+      />
       
     </div>
   </>

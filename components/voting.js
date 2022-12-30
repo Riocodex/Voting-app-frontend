@@ -2,7 +2,7 @@ import React, { useEffect , useState } from 'react'
 
 import { ethers } from "ethers";
 
-const Voting = ({isElection, contractAddress, contractABI}) => {
+const Voting = ({isElection, contractAddress, contractABI, setCandidateDetails}) => {
     const [voterName , setVoterName] = React.useState("")
     //updating voters name
     function updateVotersName(event){
@@ -54,6 +54,8 @@ const Voting = ({isElection, contractAddress, contractABI}) => {
 
         console.log("fetching candidates");
         let candidates = await votingContract.getCandidates();
+        setCandidateDetails(candidates)
+        
         console.log('candidate details after voting are', candidates)
       } else {
         console.log("Metamask is not connected");
