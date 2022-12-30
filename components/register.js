@@ -59,7 +59,6 @@ const Register = ({contractAddress, contractABI, setCandidateDetails}) => {
 
         console.log("fetching candidates");
         let candidates = await votingContract.getCandidates();
-        console.log("candidates for the election are: ", candidates);
         setCandidateDetails(candidates)
       } else {
         console.log("Metamask is not connected");

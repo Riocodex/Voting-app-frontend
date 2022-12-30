@@ -43,7 +43,6 @@ const StartElection = (
     
             console.log("Election has been created");
             setIsElection(true)
-            console.log(isElection)
             getElectionDetails()
            
           }
@@ -72,7 +71,6 @@ const StartElection = (
         console.log("fetching details of election");
         const electionDetails = await votingContract.getElectionDetails();
         console.log("fetched!");
-        console.log("the election details are",electionDetails.toString())
         setElectionDetails(electionDetails)
       } else {
         console.log("Metamask is not connected");

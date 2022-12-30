@@ -2,8 +2,15 @@ import React, { useEffect , useState } from 'react'
 
 import { ethers } from "ethers";
 
-const Voting = ({isElection}) => {
-    const startElectionTx = async () => {
+const Voting = ({isElection, contractAddress, contractABI}) => {
+    const [voterName , setVoterName] = React.useState("")
+    //updating voters name
+    function updateVotersName(event){
+        setVoterName(event.target.value)
+        
+        
+      }
+    const votingTx = async () => {
         try {
           const {ethereum} = window;
     
@@ -16,24 +23,51 @@ const Voting = ({isElection}) => {
               signer
             );
     
-            console.log("starting election.......")
-            const electionTxn = await votingContract.startElection(title,period,{value: ethers.utils.parseEther("1")});
+            console.log("voting.......")
+            const votingTxn = await votingContract.startElection(voterName,{value: ethers.utils.parseEther("1")});
     
-            await electionTxn.wait();
+            await votingTxn.wait();
     
             
     
-            console.log("Election has been created");
-            setIsElection(true)
-            console.log(isElection)
-            getElectionDetails()
-           
+            console.log("voted!");    
+            getElectionDetails()   
           }
         } catch (error) {
           console.log(error);
         }
         
       };
+      
+       // Function to fetch all result
+  const getElectionDetails = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const votingContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        
+
+        console.log("fetching details of election");
+        const electionDetails = await votingContract.getElectionDetails();
+        console.log("fetched!");
+        console.log("the election details after voting are",electionDetails.toString())
+        
+      } else {
+        console.log("Metamask is not connected");
+      }
+     
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+    
 
      
 
@@ -53,7 +87,7 @@ const Voting = ({isElection}) => {
     class="ml-6 m-2 px-20 py-5 rounded-lg border-gray-200 border-2 text-gray-500 text-xl font-semibold justify-center items-center placeholder-indigo-300" 
     type="text" 
     placeholder="Enter name of Candidate"
-    // onChange={updateVotersName}
+    onChange={updateVotersName}
     />
   </div>
     

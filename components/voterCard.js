@@ -1,7 +1,6 @@
 import React from 'react'
 
 const VoterCard = ({item}) => {
-  console.log('from voterscard, here are items ',item)
   return (
     <div className='bg-blue-800 w-1/3 h-full mr-6 py-4  rounded-xl hover:shadow-2xl '>
     <div>
