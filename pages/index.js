@@ -186,6 +186,14 @@ export default function Home() {
       setIsElection={setIsElection}
       />
      )}
+      {/* <StartElection 
+      contractAddress={contractAddress} 
+      contractABI={contractABI}
+      setElectionDetails={setElectionDetails}
+      electionDetails={electionDetails}
+      isElection={isElection}
+      setIsElection={setIsElection}
+      /> */}
       <Register 
       contractAddress={contractAddress} 
       contractABI={contractABI} 
