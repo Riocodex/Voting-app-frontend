@@ -30,6 +30,8 @@ export default function Home() {
 
   const [isElection, setIsElection] = useState(false)
 
+  const [winner, setWinner] = useState("")
+
   
       // Wallet connection logic
   const isWalletConnected = async () => {
@@ -86,13 +88,13 @@ export default function Home() {
         await decideWinnerTxn.wait();
         const winner = await votingContract.viewWinner();
         console.log('The winner of this Election is', winner)
+        setWinner(winner)
 
         
 
-        console.log("Winner Has been decided");
-        alert('Election has been created')
-        setIsElection(true)
-        getElectionDetails()
+        console.log("Winner Has been decided",winner);
+        
+        
        
       }
     } catch (error) {
