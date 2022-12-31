@@ -30,7 +30,7 @@ export default function Home() {
 
   const [isElection, setIsElection] = useState(false)
 
-  const [winner, setWinner] = useState("")
+  const [winnerOfElection, setWinnerOfElection] = useState("")
 
   
       // Wallet connection logic
@@ -88,12 +88,12 @@ export default function Home() {
         await decideWinnerTxn.wait();
         const winner = await votingContract.viewWinner();
         console.log('The winner of this Election is', winner)
-        setWinner(winner)
+        setWinnerOfElection(winner)
 
         
 
         console.log("Winner Has been decided",winner);
-        
+        alert('winner of this election is ',winnerOfElection)
         
        
       }
@@ -169,6 +169,14 @@ export default function Home() {
       
       </div>
       </div>
+     {electionDetails ? (
+         <Voting 
+         contractAddress={contractAddress} 
+         contractABI={contractABI}
+         isElection={isElection}
+         setCandidateDetails={setCandidateDetails}
+         />
+     ) : (
       <StartElection 
       contractAddress={contractAddress} 
       contractABI={contractABI}
@@ -177,17 +185,13 @@ export default function Home() {
       isElection={isElection}
       setIsElection={setIsElection}
       />
+     )}
       <Register 
       contractAddress={contractAddress} 
       contractABI={contractABI} 
       setCandidateDetails={setCandidateDetails}
       />
-      <Voting 
-      contractAddress={contractAddress} 
-      contractABI={contractABI}
-      isElection={isElection}
-      setCandidateDetails={setCandidateDetails}
-      />
+     
       
     </div>
   </>
