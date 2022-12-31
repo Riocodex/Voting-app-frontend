@@ -67,6 +67,9 @@ export default function Home() {
     }
   }
 
+  //decide winner 
+  
+
 
  
 
@@ -81,7 +84,11 @@ export default function Home() {
             <h1 className="py-4 px-4 font-bold text-3xl text-white">Voting App</h1>
            <div className="flex mt-2 ml-auto  text-xl">
            
-              <p className="py-4 px-4 font-bold text-white border-solid hover:border-2">Home</p>
+              {candidateDetails ? (
+                <button className="py-4 px-4 font-bold text-white border-solid hover:border-2">Decide Winner</button>
+              ) :(
+                <p className="py-4 px-4 font-bold text-white border-solid hover:border-2">Home</p>
+              )}
             
       
            </div>

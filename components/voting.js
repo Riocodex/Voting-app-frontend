@@ -30,8 +30,10 @@ const Voting = ({isElection, contractAddress, contractABI, setCandidateDetails})
     
             
     
-            console.log("voted!");    
+            console.log("voted!");  
+            alert('Voted succesfully!')  
             getCandidateDetails()   
+            getTime()
           }
         } catch (error) {
           console.log(error);
@@ -56,7 +58,7 @@ const Voting = ({isElection, contractAddress, contractABI, setCandidateDetails})
         let candidates = await votingContract.getCandidates();
         setCandidateDetails(candidates)
         
-        console.log('candidate details after voting are', candidates)
+        console.log('Updating candidate details', candidates)
       } else {
         console.log("Metamask is not connected");
       }
@@ -65,6 +67,33 @@ const Voting = ({isElection, contractAddress, contractABI, setCandidateDetails})
       console.log(error);
     }
   };
+
+  const getTime = async() =>{
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const votingContract = new ethers.Contract(
+            contractAddress,
+            contractABI,
+            signer
+          );
+          
+  
+          console.log("fetching timeDetails");
+          let timePeriod = await votingContract.timeview();
+          let blockchainPeriod = await votingContract.blocktimestampe()
+          console.log('Time of election in mins', timePeriod.toString())
+          console.log('blockchain time stamp',blockchainPeriod.toString())
+        } else {
+          console.log("Metamask is not connected");
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }
+  }
 
 
      
