@@ -68,7 +68,38 @@ export default function Home() {
   }
 
   //decide winner 
-  
+  const decideWinnerTx = async () => {
+    try {
+      const {ethereum} = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum, "any");
+        const signer = provider.getSigner();
+        const votingContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+
+        console.log("deciding winner.......")
+        const decideWinnerTxn = await votingContract.decideWinner();
+        await decideWinnerTxn.wait();
+        const winner = await votingContract.viewWinner();
+        console.log('The winner of this Election is', winner)
+
+        
+
+        console.log("Winner Has been decided");
+        alert('Election has been created')
+        setIsElection(true)
+        getElectionDetails()
+       
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
 
 
  
@@ -85,7 +116,9 @@ export default function Home() {
            <div className="flex mt-2 ml-auto  text-xl">
            
               {candidateDetails ? (
-                <button className="py-4 px-4 font-bold text-white border-solid hover:border-2">Decide Winner</button>
+                <button
+                onClick={decideWinnerTx}
+                 className="py-4 px-4 font-bold text-white border-solid hover:border-2">Decide Winner</button>
               ) :(
                 <p className="py-4 px-4 font-bold text-white border-solid hover:border-2">Home</p>
               )}

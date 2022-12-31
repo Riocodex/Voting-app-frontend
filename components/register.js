@@ -32,7 +32,7 @@ const Register = ({contractAddress, contractABI, setCandidateDetails}) => {
         
 
         console.log("Canidate has been registered");
-
+        alert('Candidate has been registered')
        
       }
     } catch (error) {

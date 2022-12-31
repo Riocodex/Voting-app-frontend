@@ -42,6 +42,7 @@ const StartElection = (
             
     
             console.log("Election has been created");
+            alert('Election has been created')
             setIsElection(true)
             getElectionDetails()
            
