@@ -169,14 +169,7 @@ export default function Home() {
       
       </div>
       </div>
-     {electionDetails ? (
-         <Voting 
-         contractAddress={contractAddress} 
-         contractABI={contractABI}
-         isElection={isElection}
-         setCandidateDetails={setCandidateDetails}
-         />
-     ) : (
+
       <StartElection 
       contractAddress={contractAddress} 
       contractABI={contractABI}
@@ -185,20 +178,17 @@ export default function Home() {
       isElection={isElection}
       setIsElection={setIsElection}
       />
-     )}
-      {/* <StartElection 
-      contractAddress={contractAddress} 
-      contractABI={contractABI}
-      setElectionDetails={setElectionDetails}
-      electionDetails={electionDetails}
-      isElection={isElection}
-      setIsElection={setIsElection}
-      /> */}
       <Register 
       contractAddress={contractAddress} 
       contractABI={contractABI} 
       setCandidateDetails={setCandidateDetails}
       />
+        <Voting 
+         contractAddress={contractAddress} 
+         contractABI={contractABI}
+         isElection={isElection}
+         setCandidateDetails={setCandidateDetails}
+         />
      
       
     </div>
