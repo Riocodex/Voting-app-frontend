@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "next": "^13.1.1",
     "react": "18.2.0",

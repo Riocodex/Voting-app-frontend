@@ -11,8 +11,6 @@ const StartElection = (
     // updating the title Change
     function updateTitle(event){
         setTitle(event.target.value)
-        
-        
       }
   
       //updating the period
