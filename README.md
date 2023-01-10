@@ -22,7 +22,7 @@ Ensure you have [metamask](https://chrome.google.com/webstore/detail/metamask/nk
 With all these setup youre good to go
 
 ## Using The Website
-
+- Connect Wallet
 - Start Election
 - Register (note you can only register once with one address, to register   again ensure to change your account, simply do so by going to your metamask and connecting with another account )
 - When youre done registering with different accounts you will see the names on screen
