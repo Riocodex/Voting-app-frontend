@@ -24,9 +24,8 @@ With all these setup youre good to go
 ## Using The Website
 - Connect Wallet
 - Start Election
+- Register (note you can only register once with one address, to register   again ensure to change your account, simply do so by going to your metamask and connecting with another account )
+- When youre done registering with different accounts you will see the names on screen
 
-- Now you have registered as candidates the vote section should be up insert the name of user you want to vote for
-- Note that you cant vote twice with the same account.
-- When youre done voting and registering..to pick winner click decide winner 
 
 
